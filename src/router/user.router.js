@@ -14,10 +14,11 @@ const {
 const {
   checkExist,
 } = require("../middlewares/validation/checkExist.middlewares");
+const { uploadImageSingle } = require("../middlewares/validation/upload/upload-images.middlewares");
 const { User } = require("../models");
 const userRouter = Router();
 //http://localhost:3000/api/v1/users/upload-avatar
-userRouter.post("/upload-avatar", uploadAvatar);
+userRouter.post("/upload-avatar",uploadImageSingle("avatar"), uploadAvatar);
 //http://localhost:3000/api/v1/users
 userRouter.get("/", findAllUser);
 //http://localhost:3000/api/v1/users/:id
